@@ -1,0 +1,6 @@
+Okay
+Start
+Stop
+Continue
+Pause
+
