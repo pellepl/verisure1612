@@ -32,7 +32,9 @@ tokens = {
     'turn',
     'system', 
     'please', 
-    'hello'
+    'hello',
+    'on',
+    'off'
     }
 
 sentences = {
