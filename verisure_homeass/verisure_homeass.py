@@ -43,8 +43,8 @@ pygame.mixer.init()
 
 # init display
 pygame.font.init()
-myfont = pygame.font.SysFont("courier new", 24, True)
-size = (800,60)
+myfont = pygame.font.SysFont("courier new", 32, True)
+size = (800,240)
 screen = pygame.display.set_mode(size)
 time.sleep(1)
 
@@ -60,6 +60,11 @@ while True:
         recorder.setformat(INFORMAT)
         recorder.setperiodsize(FRAMESIZE)
         setup_mic = False
+        recimg = pygame.image.load("microphone.png")
+        recimg = pygame.transform.scale(recimg, (150,150))
+        screen.fill((0,0,0))
+        screen.blit(recimg, (350,50))
+        pygame.display.update()
 
     buf = recorder.read()[1]
     len = recorder.read()[0]

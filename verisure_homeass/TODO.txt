@@ -1,0 +1,3 @@
+
+* Dictionary
+Add: 'in' 'out' 'off' 'on'
