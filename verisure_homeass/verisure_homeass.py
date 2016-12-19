@@ -6,6 +6,7 @@ import numpy as np
 import array
 import pygame
 from pygame.locals import *
+import PyInterpreter
 
 modeldir = "/usr/local/share/pocketsphinx/model"
 
@@ -101,7 +102,7 @@ while True:
                 print 'Detection: Best hypothesis segments:', [seg.word for seg in decoder.seg()]
 
                 rec_message = ""
-                do_talk = False
+                found_words = False
                 for seg in decoder.seg():
                     word = seg.word
                     # check for paranthesis
@@ -110,7 +111,7 @@ while True:
                         word = word[:parpos]
                     print "word:" + word
                     if word.isalpha():
-                        do_talk = True
+                        found_words = True
                         rec_message = rec_message + word.lower() + " "
 
                 # Print recoreded message
@@ -120,9 +121,18 @@ while True:
                 pygame.display.update()
 
                 # Process recorded message
-                if do_talk:
+                if found_words:
+
+                    # Interpret
+                    print "INTERPRET: " + rec_message
+                    interp_command = PyInterpreter.interpret( rec_message )
+                    if interp_command != None:
+                        print "COMMAND: " + interp_command
+                    else:
+                        print "COMMAND: UNDEFINED"
+
                     # Echo back message
-                    print "ECHO recorded message:" + rec_message
+                    print "ECHO recorded message: " + rec_message
                     # create wave file with spoken words
                     cmd = "pico2wave -l en-GB -w rec_message.wav \"" + rec_message + "\""
                     print cmd
