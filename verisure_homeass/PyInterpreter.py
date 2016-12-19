@@ -39,16 +39,16 @@ tokens = {
 
 sentences = {
     'GET_TEMP':           'is | what | what is | get , (the) , temperature',
-    'GET_HUMI':           'is | what | what is | get , (the) , humidity',
-    'IS_DOOR_OPEN':       'is , (the) , door , open',
-    'IS_DOOR_CLOSED':     'is , (the) , door , closed',
-    'IS_DOOR_LOCKED':     'is , (the) , door , locked | lock',
-    'GET_ARM_STATE':      'is | what | what is | get , (the) , system , armed | disarmed',
-    'IS_DOOR_UNLOCKED':   'is , (the) , door , unlocked | unlock',
-    'LAMP_ON_HALL':       'turn | switch , on , (the) , hall , lamp',
-    'LAMP_ON_HALL2':      '(the) , hall , lamp , on',
-    'LAMP_ON_KITCHEN':    'turn | switch , on , (the) , kitchen , lamp',
-    'LAMP_ON_KITCHEN2':   '(the) , kitchen , lamp , on',
+#    'GET_HUMI':           'is | what | what is | get , (the) , humidity',
+##    'IS_DOOR_OPEN':       'is , (the) , door , open',
+#    'IS_DOOR_CLOSED':     'is , (the) , door , closed',
+#    'IS_DOOR_LOCKED':     'is , (the) , door , locked | lock',
+#    'GET_ARM_STATE':      'is | what | what is | get , (the) , system , armed | disarmed',
+#    'IS_DOOR_UNLOCKED':   'is , (the) , door , unlocked | unlock',
+#    'LAMP_ON_HALL':       'turn | switch , on , (the) , hall , lamp',
+#    'LAMP_ON_HALL2':      '(the) , hall , lamp , on',
+#    'LAMP_ON_KITCHEN':    'turn | switch , on , (the) , kitchen , lamp',
+#    'LAMP_ON_KITCHEN2':   '(the) , kitchen , lamp , on',
 }
 
 compiled = {}
@@ -87,7 +87,7 @@ def compileGrammar():
     pass
 
 
-_dbg = False
+_dbg = True
 def matchSentence(words, sentence):
     if _dbg: print "MATCH " + str(words) + " AGAINST " + str(sentence)
     wordIx = 0
@@ -100,7 +100,7 @@ def matchSentence(words, sentence):
             seqIx = 0
             while seqIx < len(sequence):
                 gword = sequence[seqIx]
-                if _dbg: print '      ' + gword['tok'] + ' == ' + words[curWordIx]
+                if _dbg: print '      ' + gword['tok'] + ' == ' + words[curWordIx] + '   seq:' + str(seqIx) + 'of' + str(len(sequence)) + '  in:' + str(curWordIx) + 'of' + str(len(words))
                 if words[curWordIx] == gword['tok']:
                     if _dbg: print '    ok'
                     curWordIx += 1
