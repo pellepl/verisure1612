@@ -5,6 +5,7 @@ import alsaaudio
 import numpy as np
 import array
 import pygame
+from pygame.locals import *
 
 modeldir = "/usr/local/share/pocketsphinx/model"
 
@@ -35,9 +36,17 @@ in_speech = False
 
 print "Ready..."
 
+# init pygame and audio
 pygame.mixer.pre_init(16000, -16, 1, 1024)
 pygame.init()
 pygame.mixer.init()
+
+# init display
+pygame.font.init()
+myfont = pygame.font.SysFont("courier new", 24, True)
+size = (800,60)
+screen = pygame.display.set_mode(size)
+time.sleep(1)
 
 setup_mic = True
 
@@ -98,6 +107,12 @@ while True:
                     if word.isalpha():
                         do_talk = True
                         rec_message = rec_message + word.lower() + " "
+
+                # Print recoreded message
+                screen.fill((0,0,0))
+                mytex = myfont.render(rec_message, False, (0,0,255))
+                screen.blit(mytex, (10,10))
+                pygame.display.update()
 
                 # Process recorded message
                 if do_talk:
