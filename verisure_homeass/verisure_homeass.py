@@ -11,8 +11,8 @@ modeldir = "/usr/local/share/pocketsphinx/model"
 # Create a decoder with certain model
 config = Decoder.default_config()
 config.set_string('-hmm', os.path.join(modeldir, 'en-us/en-us'))
-config.set_string('-dict', './3712.dic')
-config.set_string('-lm', './3712.lm')
+config.set_string('-dict', './3047.dic')
+config.set_string('-lm', './3047.lm')
 config.set_string('-logfn', '/dev/null')
 config.set_string('-vad_threshold', '5')
 config.set_string('-samprate', '16000/8000/48000')
