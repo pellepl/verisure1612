@@ -90,8 +90,11 @@ while True:
                 do_talk = False
                 for seg in decoder.seg():
                     word = seg.word
-# TODO: cut ( and )
-#                    print "word:" + word
+                    # check for paranthesis
+                    parpos = word.find('(')
+                    if (parpos > 0):
+                        word = word[:parpos]
+                    print "word:" + word
                     if word.isalpha():
                         do_talk = True
                         rec_message = rec_message + word.lower() + " "
