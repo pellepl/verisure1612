@@ -1,0 +1,133 @@
+Language model created by QuickLM on Mon Dec 19 07:24:58 EST 2016
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 27 sentences and 29 words
+
+\data\
+ngram 1=29
+ngram 2=54
+ngram 3=27
+
+\1-grams:
+-0.7782 </s> -0.3010
+-0.7782 <s> -0.2218
+-2.2095 ARE -0.2218
+-2.2095 ARM -0.2218
+-2.2095 ARMED -0.2218
+-2.2095 CLOSED -0.2218
+-2.2095 DISARM -0.2218
+-2.2095 DISARMED -0.2218
+-2.2095 DOOR -0.2218
+-2.2095 GET -0.2218
+-2.2095 HALL -0.2218
+-2.2095 HELLO -0.2218
+-2.2095 HUMIDITY -0.2218
+-2.2095 IS -0.2218
+-2.2095 IT -0.2218
+-2.2095 KITCHEN -0.2218
+-2.2095 LAMP -0.2218
+-2.2095 LAMPS -0.2218
+-2.2095 LOCK -0.2218
+-2.2095 LOCKED -0.2218
+-2.2095 OPEN -0.2218
+-2.2095 PLEASE -0.2218
+-2.2095 SYSTEM -0.2218
+-2.2095 TEMPERATURE -0.2218
+-2.2095 THE -0.2218
+-2.2095 UNLOCK -0.2218
+-2.2095 UNLOCKED -0.2218
+-2.2095 VERYSHOR -0.2218
+-2.2095 WHAT -0.2218
+
+\2-grams:
+-1.7324 <s> ARE 0.0000
+-1.7324 <s> ARM 0.0000
+-1.7324 <s> ARMED 0.0000
+-1.7324 <s> CLOSED 0.0000
+-1.7324 <s> DISARM 0.0000
+-1.7324 <s> DISARMED 0.0000
+-1.7324 <s> DOOR 0.0000
+-1.7324 <s> GET 0.0000
+-1.7324 <s> HALL 0.0000
+-1.7324 <s> HELLO 0.0000
+-1.7324 <s> HUMIDITY 0.0000
+-1.7324 <s> IS 0.0000
+-1.7324 <s> IT 0.0000
+-1.7324 <s> KITCHEN 0.0000
+-1.7324 <s> LAMP 0.0000
+-1.7324 <s> LAMPS 0.0000
+-1.7324 <s> LOCK 0.0000
+-1.7324 <s> LOCKED 0.0000
+-1.7324 <s> OPEN 0.0000
+-1.7324 <s> PLEASE 0.0000
+-1.7324 <s> SYSTEM 0.0000
+-1.7324 <s> TEMPERATURE 0.0000
+-1.7324 <s> THE 0.0000
+-1.7324 <s> UNLOCK 0.0000
+-1.7324 <s> UNLOCKED 0.0000
+-1.7324 <s> VERYSHOR 0.0000
+-1.7324 <s> WHAT 0.0000
+-0.3010 ARE </s> -0.3010
+-0.3010 ARM </s> -0.3010
+-0.3010 ARMED </s> -0.3010
+-0.3010 CLOSED </s> -0.3010
+-0.3010 DISARM </s> -0.3010
+-0.3010 DISARMED </s> -0.3010
+-0.3010 DOOR </s> -0.3010
+-0.3010 GET </s> -0.3010
+-0.3010 HALL </s> -0.3010
+-0.3010 HELLO </s> -0.3010
+-0.3010 HUMIDITY </s> -0.3010
+-0.3010 IS </s> -0.3010
+-0.3010 IT </s> -0.3010
+-0.3010 KITCHEN </s> -0.3010
+-0.3010 LAMP </s> -0.3010
+-0.3010 LAMPS </s> -0.3010
+-0.3010 LOCK </s> -0.3010
+-0.3010 LOCKED </s> -0.3010
+-0.3010 OPEN </s> -0.3010
+-0.3010 PLEASE </s> -0.3010
+-0.3010 SYSTEM </s> -0.3010
+-0.3010 TEMPERATURE </s> -0.3010
+-0.3010 THE </s> -0.3010
+-0.3010 UNLOCK </s> -0.3010
+-0.3010 UNLOCKED </s> -0.3010
+-0.3010 VERYSHOR </s> -0.3010
+-0.3010 WHAT </s> -0.3010
+
+\3-grams:
+-0.3010 <s> ARE </s>
+-0.3010 <s> ARM </s>
+-0.3010 <s> ARMED </s>
+-0.3010 <s> CLOSED </s>
+-0.3010 <s> DISARM </s>
+-0.3010 <s> DISARMED </s>
+-0.3010 <s> DOOR </s>
+-0.3010 <s> GET </s>
+-0.3010 <s> HALL </s>
+-0.3010 <s> HELLO </s>
+-0.3010 <s> HUMIDITY </s>
+-0.3010 <s> IS </s>
+-0.3010 <s> IT </s>
+-0.3010 <s> KITCHEN </s>
+-0.3010 <s> LAMP </s>
+-0.3010 <s> LAMPS </s>
+-0.3010 <s> LOCK </s>
+-0.3010 <s> LOCKED </s>
+-0.3010 <s> OPEN </s>
+-0.3010 <s> PLEASE </s>
+-0.3010 <s> SYSTEM </s>
+-0.3010 <s> TEMPERATURE </s>
+-0.3010 <s> THE </s>
+-0.3010 <s> UNLOCK </s>
+-0.3010 <s> UNLOCKED </s>
+-0.3010 <s> VERYSHOR </s>
+-0.3010 <s> WHAT </s>
+
+\end\
