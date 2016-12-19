@@ -1,0 +1,74 @@
+Language model created by QuickLM on Mon Dec 12 09:19:15 EST 2016
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 6 sentences and 16 words
+
+\data\
+ngram 1=16
+ngram 2=20
+ngram 3=15
+
+\1-grams:
+-0.9853 </s> -0.3010
+-0.9853 <s> -0.2536
+-1.7634 GARAGE -0.2536
+-1.7634 IN -0.2935
+-1.4624 IS -0.2858
+-1.7634 OKAY -0.2935
+-1.7634 OPEN -0.2935
+-1.7634 PI -0.2536
+-1.7634 RAMONA -0.2536
+-1.7634 SHUTDOWN -0.2536
+-1.7634 START -0.2935
+-1.4624 THE -0.2858
+-1.7634 TIME -0.2536
+-1.7634 TRANSLATOR -0.2536
+-1.7634 WEATHER -0.2935
+-1.4624 WHAT -0.2858
+
+\2-grams:
+-1.0792 <s> OKAY 0.0000
+-1.0792 <s> OPEN 0.0000
+-1.0792 <s> SHUTDOWN 0.0000
+-1.0792 <s> START 0.0000
+-0.7782 <s> WHAT 0.0000
+-0.3010 GARAGE </s> -0.3010
+-0.3010 IN RAMONA 0.0000
+-0.3010 IS THE 0.0000
+-0.3010 OKAY PI 0.0000
+-0.3010 OPEN GARAGE 0.0000
+-0.3010 PI </s> -0.3010
+-0.3010 RAMONA </s> -0.3010
+-0.3010 SHUTDOWN </s> -0.3010
+-0.3010 START TRANSLATOR 0.0000
+-0.6021 THE TIME 0.0000
+-0.6021 THE WEATHER 0.0000
+-0.3010 TIME </s> -0.3010
+-0.3010 TRANSLATOR </s> -0.3010
+-0.3010 WEATHER IN 0.0000
+-0.3010 WHAT IS 0.0000
+
+\3-grams:
+-0.3010 <s> OKAY PI
+-0.3010 <s> OPEN GARAGE
+-0.3010 <s> SHUTDOWN </s>
+-0.3010 <s> START TRANSLATOR
+-0.3010 <s> WHAT IS
+-0.3010 IN RAMONA </s>
+-0.6021 IS THE TIME
+-0.6021 IS THE WEATHER
+-0.3010 OKAY PI </s>
+-0.3010 OPEN GARAGE </s>
+-0.3010 START TRANSLATOR </s>
+-0.3010 THE TIME </s>
+-0.3010 THE WEATHER IN
+-0.3010 WEATHER IN RAMONA
+-0.3010 WHAT IS THE
+
+\end\
