@@ -39,7 +39,7 @@ in_speech = False
 print "Ready..."
 
 # init pygame and audio
-pygame.mixer.pre_init(16000, -16, 1, 1024)
+pygame.mixer.pre_init(16000, -16, 1, 512)
 pygame.init()
 pygame.mixer.init()
 
@@ -67,6 +67,7 @@ while True:
         screen.fill((0,0,0))
         screen.blit(recimg, (350,50))
         pygame.display.update()
+        print "Recording..."
 
     buf = recorder.read()[1]
     len = recorder.read()[0]
@@ -82,21 +83,22 @@ while True:
 
         if ((in_speech == True) and (utt_started == False)):
             utt_started = True
-            print "Listening..."
+            print "Voice detected..."
             listen_time = 0
 
         if (((in_speech == False) and (utt_started == True)) or ((utt_started == True) and (listen_time > (2*RATE/FRAMESIZE)))):
 
             # Speech -> Silence transition, time to start new utterance
             decoder.end_utt()
-            print "Analyzing..."
+
+            recorder.pause(True)
+
+            print "Analyzing recording..."
             # Notify user analyzing state
             screen.fill((0,0,0))
             mytex = myfont.render("...analyzing input...", False, (100,100,255))
-            screen.blit(mytex, (50,50))
+            screen.blit(mytex, (150,150))
             pygame.display.update()
-
-            recorder.pause(True)
 
             if decoder.hyp() != None:
                 hypothesis = decoder.hyp()
@@ -166,10 +168,10 @@ while True:
                 # start new utt
                 decoder.start_utt()
                 utt_started = False
-                print "Restarting."
+                print "Restarting speech analyzer..."
 
             recorder.pause(False)
             setup_mic = True
-            print "Setup mic again..."
+            print "Restarting audio recorder..."
 
         time.sleep(0.1)
