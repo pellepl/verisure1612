@@ -13,8 +13,8 @@ modeldir = "/usr/local/share/pocketsphinx/model"
 # Create a decoder with certain model
 config = Decoder.default_config()
 config.set_string('-hmm', os.path.join(modeldir, 'en-us/en-us'))
-config.set_string('-dict', './6763.dic')
-config.set_string('-lm', './6763.lm')
+config.set_string('-dict', './0585.dic')
+config.set_string('-lm', './0585.lm')
 config.set_string('-logfn', '/dev/null')
 config.set_string('-vad_threshold', '4')
 config.set_string('-samprate', '16000/8000/48000')
@@ -72,8 +72,8 @@ while True:
     len = recorder.read()[0]
 
     if buf:
-        sys.stdout.write('.')
-        sys.stdout.flush()
+#        sys.stdout.write('.')
+#        sys.stdout.flush()
 
         decoder.process_raw(buf, False, False)
 
@@ -109,7 +109,7 @@ while True:
                 print 'Detection: Best hypothesis segments:', [seg.word for seg in decoder.seg()]
 
                 rec_message = ""
-                found_words = False
+                found_words = 0
                 for seg in decoder.seg():
                     word = seg.word.lower()
                     # check for paranthesis
@@ -121,7 +121,7 @@ while True:
                         word = 'verisure'
                     #print "word:" + word
                     if word.isalpha():
-                        found_words = True
+                        found_words = found_words + 1
                         rec_message = rec_message + word + " "
 
                 # Print recoreded message
@@ -131,13 +131,14 @@ while True:
                 pygame.display.update()
 
                 # Process recorded message
-                if found_words:
+                if found_words > 1:
 
                     # Interpret
                     print "INTERPRET: " + rec_message
                     interp_command = PyInterpreter.interpret( rec_message )
                     if interp_command == None:
-                        interp_command = "Sorry I did not understand, try again"
+                        interp_command = "Sorry I did not understand "
+                        rec_message = "Sorry I did not understand " + rec_message
                     print "COMMAND: " + interp_command
 
                     # Print feedback
