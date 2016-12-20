@@ -157,6 +157,8 @@ def interpret(speech):
     
     # remove all 'please'
     words = [x for x in words if x != 'please']
+    if len(words) == 0:
+        return None
     if not words[0] == 'verisure':
         return None
     if _dbg: print "MATCH " + str(words[1:])
