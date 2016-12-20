@@ -13,11 +13,12 @@ modeldir = "/usr/local/share/pocketsphinx/model"
 # Create a decoder with certain model
 config = Decoder.default_config()
 config.set_string('-hmm', os.path.join(modeldir, 'en-us/en-us'))
-config.set_string('-dict', './3047.dic')
-config.set_string('-lm', './3047.lm')
+config.set_string('-dict', './6763.dic')
+config.set_string('-lm', './6763.lm')
 config.set_string('-logfn', '/dev/null')
-config.set_string('-vad_threshold', '5')
+config.set_string('-vad_threshold', '4')
 config.set_string('-samprate', '16000/8000/48000')
+config.set_string('-agc', 'max')
 
 # constants
 CHANNELS  = 1
@@ -110,15 +111,18 @@ while True:
                 rec_message = ""
                 found_words = False
                 for seg in decoder.seg():
-                    word = seg.word
+                    word = seg.word.lower()
                     # check for paranthesis
                     parpos = word.find('(')
                     if (parpos > 0):
                         word = word[:parpos]
-                    print "word:" + word
+                    # check for Verisure alternatives
+                    if (word.startswith('ver')):
+                        word = 'verisure'
+                    #print "word:" + word
                     if word.isalpha():
                         found_words = True
-                        rec_message = rec_message + word.lower() + " "
+                        rec_message = rec_message + word + " "
 
                 # Print recoreded message
                 screen.fill((0,0,0))
@@ -133,7 +137,7 @@ while True:
                     print "INTERPRET: " + rec_message
                     interp_command = PyInterpreter.interpret( rec_message )
                     if interp_command == None:
-                        interp_command = "[ UNDEFINED ]"
+                        interp_command = "Sorry I did not understand, try again"
                     print "COMMAND: " + interp_command
 
                     # Print feedback
