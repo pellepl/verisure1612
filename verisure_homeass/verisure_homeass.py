@@ -24,7 +24,7 @@ config.set_string('-agc', 'max')
 CHANNELS  = 1
 INFORMAT  = alsaaudio.PCM_FORMAT_S16_LE
 RATE      = 16000
-FRAMESIZE = 512
+FRAMESIZE = 3072
 
 # Process audio chunk by chunk.
 # On keyword detected perform action and restart search
@@ -38,8 +38,8 @@ in_speech = False
 
 print "Ready..."
 
-# init pygame and audio
-pygame.mixer.pre_init(16000, -16, 1, 512)
+# init pygame and audio, used for audio playback
+pygame.mixer.pre_init(16000, -16, 1, 1024)
 pygame.init()
 pygame.mixer.init()
 
@@ -48,6 +48,11 @@ pygame.font.init()
 myfont = pygame.font.SysFont("courier new", 32, True)
 size = (800,240)
 screen = pygame.display.set_mode(size)
+pygame.display.set_caption('Verisure Home Assistant')
+recimg = pygame.image.load("microphone.png")
+recimg = pygame.transform.scale(recimg, (150,90))
+halimg = pygame.image.load("hal9000.png")
+halimg = pygame.transform.scale(halimg, (150,150))
 time.sleep(1)
 
 setup_mic = True
@@ -62,10 +67,10 @@ while True:
         recorder.setformat(INFORMAT)
         recorder.setperiodsize(FRAMESIZE)
         setup_mic = False
-        recimg = pygame.image.load("microphone.png")
-        recimg = pygame.transform.scale(recimg, (150,150))
         screen.fill((0,0,0))
         screen.blit(recimg, (350,50))
+        mytex = myfont.render("...recording...", False, (255,000,0))
+        screen.blit(mytex, (275,160))
         pygame.display.update()
         print "Recording..."
 
@@ -128,7 +133,8 @@ while True:
 
                 # Print recoreded message
                 screen.fill((0,0,0))
-                mytex = myfont.render("input: " + rec_message, False, (200,255,255))
+                screen.blit(halimg, (350,50))
+                mytex = myfont.render("heard: " + rec_message, False, (200,255,200))
                 screen.blit(mytex, (10,10))
                 pygame.display.update()
 
@@ -144,7 +150,7 @@ while True:
                     print "COMMAND: " + interp_command
 
                     # Print feedback
-                    mytex = myfont.render("" + interp_command, False, (255,200,255))
+                    mytex = myfont.render(interp_command, False, (200,255,255))
                     screen.blit(mytex, (10,200))
                     pygame.display.update()
 
