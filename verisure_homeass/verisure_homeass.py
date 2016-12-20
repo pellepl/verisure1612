@@ -85,9 +85,15 @@ while True:
             listen_time = 0
 
         if (((in_speech == False) and (utt_started == True)) or ((utt_started == True) and (listen_time > (2*RATE/FRAMESIZE)))):
+
             # Speech -> Silence transition, time to start new utterance
             decoder.end_utt()
             print "Analyzing..."
+            # Notify user analyzing state
+            screen.fill((0,0,0))
+            mytex = myfont.render("...analyzing input...", False, (100,100,255))
+            screen.blit(mytex, (50,50))
+            pygame.display.update()
 
             recorder.pause(True)
 
@@ -116,7 +122,7 @@ while True:
 
                 # Print recoreded message
                 screen.fill((0,0,0))
-                mytex = myfont.render(rec_message, False, (0,0,255))
+                mytex = myfont.render("input: " + rec_message, False, (200,200,255))
                 screen.blit(mytex, (10,10))
                 pygame.display.update()
 
@@ -126,10 +132,14 @@ while True:
                     # Interpret
                     print "INTERPRET: " + rec_message
                     interp_command = PyInterpreter.interpret( rec_message )
-                    if interp_command != None:
-                        print "COMMAND: " + interp_command
-                    else:
-                        print "COMMAND: UNDEFINED"
+                    if interp_command == None:
+                        interp_command = "[ UNDEFINED ]"
+                    print "COMMAND: " + interp_command
+
+                    # Print feedback
+                    mytex = myfont.render("output: " + interp_command, False, (200,200,255))
+                    screen.blit(mytex, (10,200))
+                    pygame.display.update()
 
                     # Echo back message
                     print "ECHO recorded message: " + rec_message
