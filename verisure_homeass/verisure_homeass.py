@@ -72,8 +72,8 @@ while True:
     len = recorder.read()[0]
 
     if buf:
-        sys.stdout.write('.')
-        sys.stdout.flush()
+#        sys.stdout.write('.')
+#        sys.stdout.flush()
 
         decoder.process_raw(buf, False, False)
 
@@ -109,7 +109,7 @@ while True:
                 print 'Detection: Best hypothesis segments:', [seg.word for seg in decoder.seg()]
 
                 rec_message = ""
-                found_words = False
+                found_words = 0
                 for seg in decoder.seg():
                     word = seg.word.lower()
                     # check for paranthesis
@@ -121,7 +121,7 @@ while True:
                         word = 'verisure'
                     #print "word:" + word
                     if word.isalpha():
-                        found_words = True
+                        found_words = found_words + 1
                         rec_message = rec_message + word + " "
 
                 # Print recoreded message
@@ -131,13 +131,14 @@ while True:
                 pygame.display.update()
 
                 # Process recorded message
-                if found_words:
+                if found_words > 1:
 
                     # Interpret
                     print "INTERPRET: " + rec_message
                     interp_command = PyInterpreter.interpret( rec_message )
                     if interp_command == None:
-                        interp_command = "Sorry I did not understand, try again"
+                        interp_command = "Sorry I did not understand "
+                        rec_message = "Sorry I did not understand " + rec_message
                     print "COMMAND: " + interp_command
 
                     # Print feedback
