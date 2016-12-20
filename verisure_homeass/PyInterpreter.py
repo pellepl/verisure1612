@@ -57,7 +57,7 @@ rules = {
     'ARM2':               'system , arm',
     'DISARM':             'disarm , (the) , system',
     'DISARM2':            'system , disarm',
-    'HELLO':              'hello',
+    'HELLO':              'hello | the | the off',
 }
 
 isCompiled = False
