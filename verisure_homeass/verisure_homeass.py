@@ -24,7 +24,7 @@ config.set_string('-agc', 'max')
 CHANNELS  = 1
 INFORMAT  = alsaaudio.PCM_FORMAT_S16_LE
 RATE      = 16000
-FRAMESIZE = 2048
+FRAMESIZE = 512
 
 # Process audio chunk by chunk.
 # On keyword detected perform action and restart search
@@ -126,7 +126,7 @@ while True:
 
                 # Print recoreded message
                 screen.fill((0,0,0))
-                mytex = myfont.render("input: " + rec_message, False, (200,200,255))
+                mytex = myfont.render("input: " + rec_message, False, (200,255,255))
                 screen.blit(mytex, (10,10))
                 pygame.display.update()
 
@@ -142,7 +142,7 @@ while True:
                     print "COMMAND: " + interp_command
 
                     # Print feedback
-                    mytex = myfont.render("output: " + interp_command, False, (200,200,255))
+                    mytex = myfont.render("" + interp_command, False, (255,200,255))
                     screen.blit(mytex, (10,200))
                     pygame.display.update()
 
