@@ -4,7 +4,7 @@ import sys
 from string import strip
 
 tokens = {
-    'veryshor', 
+    'verisure', 
     'door', 
     'lock', 
     'locked', 
@@ -19,7 +19,7 @@ tokens = {
     'lamp',
     'lamps', 
     'kitchen', 
-    'hall', 
+    'bedroom', 
     'temperature', 
     'humidity',
     'are', 
@@ -34,7 +34,11 @@ tokens = {
     'please', 
     'hello',
     'on',
-    'off'
+    'off',
+    'in',
+    'out',
+    'up',
+    'down'
     }
 
 rules = {
@@ -45,14 +49,15 @@ rules = {
     'IS_DOOR_LOCKED':     'is , (the) , door , locked | lock',
     'GET_ARM_STATE':      'is | what | what is | get , (the) , system , armed | disarmed',
     'IS_DOOR_UNLOCKED':   'is , (the) , door , unlocked | unlock',
-    'LAMP_ON_HALL':       'turn | switch , on , (the) , hall , lamp',
-    'LAMP_ON_HALL2':      '(turn) , (switch) , (the) , hall , lamp , on',
+    'LAMP_ON_BEDROOM':    'turn | switch , on , (the) , bedroom , lamp',
+    'LAMP_ON_BEDROOM2':   '(turn) , (switch) , (the) , bedroom , lamp , on',
     'LAMP_ON_KITCHEN':    'turn | switch , on , (the) , kitchen , lamp',
     'LAMP_ON_KITCHEN2':   '(turn) , (switch) , (the) , kitchen , lamp , on',
-    'ARM':                'arm , (the) , system , (please)',
+    'ARM':                'arm , (the) , system',
     'ARM2':               'system , arm',
     'DISARM':             'disarm , (the) , system',
     'DISARM2':            'system , disarm',
+    'HELLO':              'hello',
 }
 
 isCompiled = False
@@ -149,7 +154,10 @@ def interpret(speech):
         compileGrammar()
         isCompiled = True
     words = speech.split()
-    if not words[0] == 'veryshor':
+    
+    # remove all 'please'
+    words = [x for x in words if x != 'please']
+    if not words[0] == 'verisure':
         return
     if _dbg: print "MATCH " + str(words[1:])
     for rule in compiled:
