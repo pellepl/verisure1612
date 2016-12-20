@@ -158,14 +158,15 @@ def interpret(speech):
     # remove all 'please'
     words = [x for x in words if x != 'please']
     if not words[0] == 'verisure':
-        return
+        return None
     if _dbg: print "MATCH " + str(words[1:])
     for rule in compiled:
         if _dbg: print "RULE " + str(rule)
         if matchRule(words[1:], 0, compiled[rule], 0):
             print rule
-            return
+            return rule
     print '?'
+    return None
 
 # <COMMAND> :
 # rule[
